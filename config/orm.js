@@ -15,8 +15,8 @@ const orm = {
         // Insert record to burgers table
         const sql = `INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)`
         const [result] = await connection.query(sql, [burgerName, devoured])
-        this.id = result.insertId
-        return this
+        let burgerId = result.insertId
+        return burgerId
     },
 
     updateOne: async (id, burgerName, devoured) => {
@@ -27,7 +27,7 @@ const orm = {
         { burger_name: burgerName, devoured: devoured },
         id
         ])
-        return this
+        return id
     }
 }
 
