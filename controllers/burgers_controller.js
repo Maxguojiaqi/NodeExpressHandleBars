@@ -28,10 +28,13 @@ try {
 }
 })
 
-router.put('/api/burgers', async function (req, res) {
+router.put('/api/burgers/:id', async function (req, res) {
 try {
-    const {id, name, devoured} = req.body
-    let updatedBurgerID = await burger.updateBurger(id, name,devoured)
+    console.log('receive the put request')
+    let burgerID = req.params.id
+    const {devoured} = req.body
+    console.log(devoured)
+    let updatedBurgerID = await burger.updateBurger(burgerID,devoured)
     res.status(201).json(updatedBurgerID)
     
 } catch (err) {

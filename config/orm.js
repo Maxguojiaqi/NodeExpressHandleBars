@@ -19,12 +19,13 @@ const orm = {
         return burgerId
     },
 
-    updateOne: async (id, burgerName, devoured) => {
+    updateOne: async (id, devoured) => {
         // update record from the burgers table using id
         devoured = fixBool(devoured)
+        console.log(devoured)
         const sql = `UPDATE burgers SET ? WHERE id = ?`
         await connection.query(sql, [
-        { burger_name: burgerName, devoured: devoured },
+        { devoured: devoured },
         id
         ])
         return id
