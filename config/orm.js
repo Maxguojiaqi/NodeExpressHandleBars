@@ -11,6 +11,7 @@ const orm = {
     },
 
     insertOne: async (burgerName, devoured) => {
+        devoured = fixBool(devoured)
         // Insert record to burgers table
         const sql = `INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)`
         const [result] = await connection.query(sql, [burgerName, devoured])
@@ -20,7 +21,7 @@ const orm = {
 
     updateOne: async (id, burgerName, devoured) => {
         // update record from the burgers table using id
-        this.sleepy = fixBool(devoured)
+        devoured = fixBool(devoured)
         const sql = `UPDATE burgers SET ? WHERE id = ?`
         await connection.query(sql, [
         { burger_name: burgerName, devoured: devoured },
@@ -30,7 +31,7 @@ const orm = {
     }
 }
 
-
+// a method to fix bool value and convert value type, this is a safety measure
 function fixBool (prop) {
     if (prop === 'false') prop = false
     else if (prop === '0') prop = false
