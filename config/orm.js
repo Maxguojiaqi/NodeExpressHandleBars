@@ -22,7 +22,6 @@ const orm = {
     updateOne: async (id, devoured) => {
         // update record from the burgers table using id
         devoured = fixBool(devoured)
-        console.log(devoured)
         const sql = `UPDATE burgers SET ? WHERE id = ?`
         await connection.query(sql, [
         { devoured: devoured },
@@ -36,6 +35,7 @@ const orm = {
 function fixBool (prop) {
     if (prop === 'false') prop = false
     else if (prop === '0') prop = false
+    else if (prop === false) prop = false
     else if (prop === 0) prop = false
     else if (prop === null) prop = false
     else if (prop === undefined) prop = false

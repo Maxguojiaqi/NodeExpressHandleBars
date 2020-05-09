@@ -20,6 +20,7 @@ try {
 router.post('/api/burgers', async function (req, res) {
 try {
     const {name, devoured} = req.body
+    console.log(req.body)
     let newBurgerID = await burger.insertNewBurger(name,devoured)
     res.status(201).json(newBurgerID)
 
@@ -30,10 +31,8 @@ try {
 
 router.put('/api/burgers/:id', async function (req, res) {
 try {
-    console.log('receive the put request')
     let burgerID = req.params.id
     const {devoured} = req.body
-    console.log(devoured)
     let updatedBurgerID = await burger.updateBurger(burgerID,devoured)
     res.status(201).json(updatedBurgerID)
     

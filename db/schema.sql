@@ -9,5 +9,5 @@ CREATE TABLE `burgers`
 	`devoured` BOOLEAN DEFAULT false,
 	PRIMARY KEY (id)
 );
-
-select * from burgers
+-- USE burgers_db;
+-- select * from burgers
