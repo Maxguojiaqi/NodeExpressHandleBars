@@ -43,4 +43,5 @@ function fixBool (prop) {
     return prop
   }
 
+  // export module
 module.exports = orm
